@@ -7,6 +7,8 @@ sdk env
 ./gradlew build
 ./gradlew run
 ./gradlew test
+
+./gradlew run < submissions/cw1157a.txt
 ```
 
 
