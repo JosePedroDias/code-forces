@@ -25,5 +25,10 @@ java {
 }
 
 application {
-    mainClass = "org.example.MainKt"
+    mainClass = "org.MainKt"
+}
+
+// required if we want the app to get stdin
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
 }
