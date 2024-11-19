@@ -1,11 +1,9 @@
 package org.cw1157a
 
 import kotlin.test.Test
-import kotlin.test.assertNotNull
 import kotlin.test.assertEquals
-import kotlin.assert
 
-class AppTest {
+class Tests {
     @Test fun a1157r() {
         assertEquals(6, reachable(599))
         assertEquals(8, reachable(7))

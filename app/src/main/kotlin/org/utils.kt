@@ -1,7 +1,5 @@
 package org
 
-// readLine
-
 fun readStr() = readln() // string line
 
 fun readInt() = readStr().toInt() // single int
