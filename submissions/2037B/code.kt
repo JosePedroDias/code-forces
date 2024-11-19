@@ -13,10 +13,10 @@ fun interceptedInputs(k: Int, nums: List<Int>): Pair<Int, Int> {
     throw Error("never happens")
 }
 
-fun readStr() = readln() // string line
-fun readInt() = readStr().toInt() // single int
-fun readStrings() = readStr().split(" ") // list of strings
-fun readInts() = readStrings().map { it.toInt() } // list of ints
+fun readStr() = readln()
+fun readInt() = readStr().toInt()
+fun readStrings() = readStr().split(" ")
+fun readInts() = readStrings().map { it.toInt() }
 
 fun main() {
     try {
@@ -29,4 +29,3 @@ fun main() {
         }
     } catch (_: Throwable) {}
 }
-

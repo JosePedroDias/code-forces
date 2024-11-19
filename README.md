@@ -8,7 +8,7 @@ sdk env
 ./gradlew run
 ./gradlew test
 
-./gradlew run < submissions/cw1157a.txt
+./gradlew run < submissions/1157A/input.txt
 ```
 
 
@@ -27,6 +27,7 @@ sdk env
 
 - https://play.kotlinlang.org/byExample/overview
 - https://kotlinlang.org/docs/collections-overview.html
+  - https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/
 
 
 ## notes

@@ -26,7 +26,8 @@ java {
 
 application {
     //mainClass = "org.cw1157a.MainKt"
-    mainClass = "org.cw2037b.MainKt"
+    mainClass = "org.cw2037a.MainKt"
+    //mainClass = "org.cw2037b.MainKt"
 }
 
 // required if we want the app to get stdin
