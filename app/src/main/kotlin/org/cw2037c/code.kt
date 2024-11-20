@@ -13,9 +13,16 @@ fun isPrime(number: Int): Boolean {
     return true
 }
 
+val primeCache = mutableMapOf<Int, Boolean>()
+fun isPrimeMemoized(number: Int): Boolean {
+    return primeCache.getOrPut(number) {
+        isPrime(number)
+    }
+}
+
 // not prime, divisible for positive integers other than 1
 fun isComposite(n: Int): Boolean {
-    return !isPrime(n)
+    return !isPrimeMemoized(n)
 }
 
 fun primogen(n: Int): String {

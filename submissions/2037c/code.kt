@@ -9,8 +9,15 @@ fun isPrime(number: Int): Boolean {
     return true
 }
 
+val primeCache = mutableMapOf<Int, Boolean>()
+fun isPrimeMemoized(number: Int): Boolean {
+    return primeCache.getOrPut(number) {
+        isPrime(number)
+    }
+}
+
 fun isComposite(n: Int): Boolean {
-    return !isPrime(n)
+    return !isPrimeMemoized(n)
 }
 
 fun <T> permutations0(list: List<T>): List<List<T>> {
