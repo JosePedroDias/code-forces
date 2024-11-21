@@ -1,67 +1,57 @@
-import java.lang.OutOfMemoryError
-
-fun isPrime(number: Int): Boolean {
-    if (number <= 1) return false
-    if (number == 2) return true
-    if (number % 2 == 0) return false
-    val limit = kotlin.math.sqrt(number.toDouble()).toInt()
-    for (i in 3..limit step 2) {
-        if (number % i == 0) return false
-    }
-    return true
-}
-
-val primeCache = mutableMapOf<Int, Boolean>()
-fun isPrimeMemoized(number: Int): Boolean {
-    return primeCache.getOrPut(number) {
-        isPrime(number)
-    }
-}
-
-private fun <T> permutationsSequence(list: List<T>): Sequence<List<T>> = sequence {
-    if (list.isEmpty()) {
-        yield(emptyList())
-    } else {
-        for (i in list.indices) {
-            val item = list[i]
-            val remaining = list.take(i) + list.drop(i + 1)
-            for (perm in permutationsSequence(remaining)) {
-                yield(listOf(item) + perm)
+fun sieveOfEratosthenes(limit: Int): BooleanArray {
+    val isPrime = BooleanArray(limit + 1) { true }
+    isPrime[0] = false
+    isPrime[1] = false
+    for (i in 2..limit) {
+        if (isPrime[i]) {
+            for (j in i * 2..limit step i) {
+                isPrime[j] = false
             }
         }
     }
+    return isPrime
 }
 
-fun permutationSeq(n: Int): Sequence<List<Int>> = sequence {
-    require(n >= 0) { "n must be a non-negative integer" }
-    val list = (1..n).toList() // Generate numbers from 1 to n
-    yieldAll(permutationsSequence(list))
-}
+fun findValidSequence(n: Int, isPrime: BooleanArray): List<Int>? {
+    val sequence = mutableListOf<Int>()
+    val used = BooleanArray(n + 1) { false }
 
-fun primogen(n: Int): String {
-    label@ for (candidate in permutationSeq(n)) {
-        for (i in 0 until n - 1) {
-            if (isPrimeMemoized(candidate[i] + candidate[i + 1])) {
-                continue@label
+    fun backtrack(): Boolean {
+        if (sequence.size == n) return true // Valid sequence found
+
+        for (next in 1..n) {
+            if (!used[next] && (sequence.isEmpty() || !isPrime[sequence.last() + next])) {
+                sequence.add(next)
+                used[next] = true
+                if (backtrack()) return true
+                // Backtrack
+                sequence.removeAt(sequence.size - 1)
+                used[next] = false
             }
         }
-        return candidate.joinToString(" ")
+        return false
     }
-    return "-1"
+
+    return if (backtrack()) sequence else null
 }
 
-fun readStr() = readln()
-
-fun readInt() = readStr().toInt()
+fun primogen(n: Int, isPrime: BooleanArray): String {
+    val sequence = findValidSequence(n, isPrime)
+    return sequence?.joinToString(" ") ?: "-1"
+}
 
 fun main() {
+    val limit = 100 // Set a reasonable limit for precomputed primes
+    val isPrime = sieveOfEratosthenes(limit)
+
     try {
-        val testCases = readInt()
-        for (tc in 0..testCases) {
-            val n = readInt()
-            println(primogen(n))
+        val testCases = readln().toInt()
+        repeat(testCases) {
+            val n = readln().toInt()
+            println(primogen(n, isPrime))
         }
-    } catch (_: OutOfMemoryError) {
-        println("OOM")
-    } catch (_: Throwable) {}
+    } catch (_: Throwable) {
+    }
 }
+
+// DISCLAIMER: I had chatgpt help to optimize this iteration of the code
