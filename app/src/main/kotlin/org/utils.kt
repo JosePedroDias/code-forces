@@ -20,6 +20,10 @@ fun comb2(n: Int): List<Pair<Int, Int>> {
     return res
 }
 
+fun naturals(n: Int): List<Int> {
+    return List(n) { it + 1 }
+}
+
 private fun <T> permutations0(list: List<T>): List<List<T>> {
     if (list.isEmpty()) return listOf(emptyList())
     val result = mutableListOf<List<T>>()
@@ -34,6 +38,25 @@ private fun <T> permutations0(list: List<T>): List<List<T>> {
 }
 
 fun permutations(n: Int): List<List<Int>> {
-    val l = List(n) { it + 1 }
-    return permutations0(l)
+    return permutations0(naturals(n))
+}
+
+private fun <T> permutationsSequence(list: List<T>): Sequence<List<T>> = sequence {
+    if (list.isEmpty()) {
+        yield(emptyList())
+    } else {
+        for (i in list.indices) {
+            val item = list[i]
+            val remaining = list.take(i) + list.drop(i + 1)
+            for (perm in permutationsSequence(remaining)) {
+                yield(listOf(item) + perm)
+            }
+        }
+    }
+}
+
+fun permutationSeq(n: Int): Sequence<List<Int>> = sequence {
+    require(n >= 0) { "n must be a non-negative integer" }
+    val list = (1..n).toList()
+    yieldAll(permutationsSequence(list))
 }

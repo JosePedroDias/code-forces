@@ -1,6 +1,6 @@
 package org.cw2037c
 
-import org.permutations
+import org.permutationSeq
 
 fun isPrime(number: Int): Boolean {
     if (number <= 1) return false
@@ -20,19 +20,14 @@ fun isPrimeMemoized(number: Int): Boolean {
     }
 }
 
-// not prime, divisible for positive integers other than 1
-fun isComposite(n: Int): Boolean {
-    return !isPrimeMemoized(n)
-}
-
 fun primogen(n: Int): String {
-    for (candidate in permutations(n)) {
-        val results = candidate.zipWithNext {
-                a, b -> isComposite(a + b)
+    label@ for (candidate in permutationSeq(n)) {
+        for (i in 0 until n - 1) {
+            if (isPrimeMemoized(candidate[i] + candidate[i + 1])) {
+                continue@label
+            }
         }
-        if (results.all { it }) {
-            return candidate.joinToString(" ")
-        }
+        return candidate.joinToString(" ")
     }
     return "-1"
 }

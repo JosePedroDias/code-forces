@@ -1,3 +1,5 @@
+import java.lang.OutOfMemoryError
+
 fun isPrime(number: Int): Boolean {
     if (number <= 1) return false
     if (number == 2) return true
@@ -16,40 +18,37 @@ fun isPrimeMemoized(number: Int): Boolean {
     }
 }
 
-fun isComposite(n: Int): Boolean {
-    return !isPrimeMemoized(n)
-}
-
-fun <T> permutations0(list: List<T>): List<List<T>> {
-    if (list.isEmpty()) return listOf(emptyList())
-    val result = mutableListOf<List<T>>()
-    for (i in list.indices) {
-        val item = list[i]
-        val remaining = list.take(i) + list.drop(i + 1)
-        for (perm in permutations0(remaining)) {
-            result.add(listOf(item) + perm)
+private fun <T> permutationsSequence(list: List<T>): Sequence<List<T>> = sequence {
+    if (list.isEmpty()) {
+        yield(emptyList())
+    } else {
+        for (i in list.indices) {
+            val item = list[i]
+            val remaining = list.take(i) + list.drop(i + 1)
+            for (perm in permutationsSequence(remaining)) {
+                yield(listOf(item) + perm)
+            }
         }
     }
-    return result
 }
 
-fun permutations(n: Int): List<List<Int>> {
-    val l = List(n) { it + 1 }
-    return permutations0(l)
+fun permutationSeq(n: Int): Sequence<List<Int>> = sequence {
+    require(n >= 0) { "n must be a non-negative integer" }
+    val list = (1..n).toList() // Generate numbers from 1 to n
+    yieldAll(permutationsSequence(list))
 }
 
 fun primogen(n: Int): String {
-    for (candidate in permutations(n)) {
-        val results = candidate.zipWithNext {
-                a, b -> isComposite(a + b)
+    label@ for (candidate in permutationSeq(n)) {
+        for (i in 0 until n - 1) {
+            if (isPrimeMemoized(candidate[i] + candidate[i + 1])) {
+                continue@label
+            }
         }
-        if (results.all { it }) {
-            return candidate.joinToString(" ")
-        }
+        return candidate.joinToString(" ")
     }
     return "-1"
 }
-
 
 fun readStr() = readln()
 
@@ -62,5 +61,7 @@ fun main() {
             val n = readInt()
             println(primogen(n))
         }
+    } catch (_: OutOfMemoryError) {
+        println("OOM")
     } catch (_: Throwable) {}
 }
