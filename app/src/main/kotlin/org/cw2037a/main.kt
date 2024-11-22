@@ -7,7 +7,7 @@ fun main() {
     try {
         val testCases = readInt()
         //println("testCases: $testCases")
-        for (tc in 0..testCases) {
+        for (tc in 1..testCases) {
             val n = readInt()
             //println("n: $n")
             val nums = readInts()

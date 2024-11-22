@@ -10,7 +10,7 @@ fun numReachable(n_: Int): Int {
 fun reachable(n: Int): Int {
     var o = n + 1
     while (o % 10 == 0) {
-        o = o / 10
+        o /= 10
     }
     return o
 }

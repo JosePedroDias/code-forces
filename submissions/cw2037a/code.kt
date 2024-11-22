@@ -1,3 +1,5 @@
+package cw2037a
+
 fun twice(nums0: List<Int>): Int {
     val nums = nums0.toMutableList()
     val set = nums.toSet()
@@ -26,7 +28,7 @@ fun readInts() = readStrings().map { it.toInt() }
 fun main() {
     try {
         val testCases: Int = readInt()
-        for (tc in 0..testCases) {
+        for (tc in 1..testCases) {
             val n: Int = readInt()
             val nums = readInts()
             val score = twice(nums)

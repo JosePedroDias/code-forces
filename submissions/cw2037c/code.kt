@@ -14,7 +14,7 @@ fun sieveOfEratosthenes(limit: Int): BooleanArray {
 
 fun findValidSequence(n: Int, isPrime: BooleanArray): List<Int>? {
     val sequence = mutableListOf<Int>()
-    val used = BooleanArray(n + 1) { false }
+    val used = BooleanArray(n + 1)
 
     fun backtrack(): Boolean {
         if (sequence.size == n) return true // Valid sequence found
