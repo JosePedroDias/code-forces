@@ -1,12 +1,17 @@
 # code wars
 
-
 ## run
 ```
 sdk env
-./gradlew build
-./gradlew run < submissions/cw1157a/input.txt
-./gradlew test
+./gradlew cw1157a:test
+./gradlew cw1157a:run < input.txt
+
+cw1157a
+cw2037a
+cw2037b
+cw2037c
+cw2037e
+
 ```
 
 ## problems

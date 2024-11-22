@@ -1,3 +1,0 @@
-fun f(n: Int): Int {
-    return n + 2
-}

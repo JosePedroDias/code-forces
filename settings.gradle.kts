@@ -1,7 +1,10 @@
-plugins {
-    // Apply the foojay-resolver plugin to allow automatic download of JDKs
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
-}
-
 rootProject.name = "code-forces"
-include("app")
+
+include("shared")
+
+include("cw1157a")
+
+include("cw2037a")
+include("cw2037b")
+include("cw2037c")
+include("cw2037e")
