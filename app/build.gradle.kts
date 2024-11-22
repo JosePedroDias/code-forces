@@ -25,11 +25,12 @@ java {
 }
 
 application {
-    //mainClass = "org.cw1157a.MainKt"
-    mainClass = "org.cw2037a.MainKt"
-    //mainClass = "org.cw2037b.MainKt"
-    //mainClass = "org.cw2037c.MainKt"
-    //mainClass = "org.cw2037e.MainKt"
+    //mainClass = "org.cw1157a.MainKt" // OK
+    //mainClass = "org.cw2037a.MainKt" // OK
+    //mainClass = "org.cw2037b.MainKt" // OK
+    mainClass = "org.cw2037d.MainKt" // TODO
+    //mainClass = "org.cw2037c.MainKt" // NOK! TODO (complex cases?)
+    //mainClass = "org.cw2037e.MainKt" // TODO
 }
 
 // required if we want the app to get stdin

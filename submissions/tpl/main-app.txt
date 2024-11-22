@@ -1,8 +1,4 @@
-package org.cw2037c
-
 import org.readInt
-
-fun f(n: Int): Int { return 42 }
 
 fun main() {
     try {

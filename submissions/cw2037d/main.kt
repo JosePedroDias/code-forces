@@ -1,8 +1,9 @@
-package org.cw2037c
+fun readStr() = readln()
+fun readInt() = readStr().toInt()
 
-import org.readInt
-
-fun f(n: Int): Int { return 42 }
+fun f(n: Int): Int {
+    return n + 2
+}
 
 fun main() {
     try {
