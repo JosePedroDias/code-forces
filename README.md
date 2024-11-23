@@ -25,7 +25,7 @@ cw2037e
 - https://codeforces.com/contest/2037
   - [A. Twice](https://codeforces.com/contest/2037/problem/A) ✅
   - [B. Intercepted Inputs](https://codeforces.com/contest/2037/problem/B) ✅
-  - [C. Superultra's Favorite Permutation](https://codeforces.com/contest/2037/problem/C) ❌
+  - [C. Superultra's Favorite Permutation](https://codeforces.com/contest/2037/problem/C) 🛟
   - D
   - [E. Kachina's Favorite Binary String](https://codeforces.com/contest/2037/problem/E) ⏳
   - F
@@ -39,3 +39,5 @@ cw2037e
 - https://play.kotlinlang.org/byExample/overview
 - https://kotlinlang.org/docs/collections-overview.html
   - https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/
+  - https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/set-of.html
+  - https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-of.html
