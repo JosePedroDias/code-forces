@@ -1,5 +1,18 @@
 import kotlin.math.pow
 
+val op2Cache = mutableMapOf<Pair<Int, Int>, Int>()
+
+fun op2(x: Int, p: Int): Int {
+    val args = Pair(x, p)
+    if (op2Cache.containsKey(args)) {
+        return op2Cache[args] ?: 0;
+    }
+    val res = x * (10.0).pow(p).toInt()
+    op2Cache[args] = res
+    return res
+    //return op2Cache.getOrPut(Pair(x, p), x * (10.0).pow(p).toInt())
+}
+
 fun zeroToY(x: Int, y: Int): Int {
     var i = 0
     var kPrev = mutableSetOf(0)
@@ -19,7 +32,8 @@ fun zeroToY(x: Int, y: Int): Int {
             // op2
             var p = 0
             while (true) {
-                kN = kP + x * (10.0).pow(p).toInt()
+                //kN = kP + x * (10.0).pow(p).toInt()
+                kN = kP + op2(x, p)
                 if (kN == y) {
                     return i
                 } else if (kN < y) {
