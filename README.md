@@ -31,6 +31,9 @@ cw2037e
   - F
   - G
 
+### kotlin heroes 6
+- https://codeforces.com/contest/1488
+  - [A. From Zero To Y](https://codeforces.com/contest/1488/problem/A)
 
 ## reference
 

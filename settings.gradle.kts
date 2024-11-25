@@ -8,3 +8,5 @@ include("cw2037a")
 include("cw2037b")
 include("cw2037c")
 include("cw2037e")
+
+include("cw1488a")

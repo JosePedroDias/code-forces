@@ -30,16 +30,50 @@ fun dbg(s: String) {
     //System.err.println(s)
 }
 
+// had help with this one
 fun computeCandidates(n: Int): List<BooleanArray> {
+    if (n <= 0) return emptyList()
+
+    val result = mutableListOf<BooleanArray>()
+    val totalCombinations = 1 shl n // 2^n combinations
+
+    for (i in 0 until totalCombinations) {
+        val arr = BooleanArray(n) { index -> (i shr index) and 1 == 1 }
+        //println("#$i -> ${arr.map { if (it) 1 else 0 }.joinToString("")}")
+        result.add(arr)
+    }
+
+    return result
+}
+
+fun boolArrToString(arr: BooleanArray): String {
+    return arr.map { if (it) 1 else 0 }.joinToString("")
+}
+
+fun boolArrFromList(l: List<Int>): BooleanArray {
+    return BooleanArray(l.size) { l[it] == 1 }
+}
+
+// zipNext by hand...
+fun count01s(arr: BooleanArray): Int {
+    var count = 0
+    for (i in 0 until arr.size - 1) {
+        val a = arr[i]
+        val b = arr[i + 1]
+        if (!a && b) ++count
+    }
+    return count
+}
+
+fun subSequences(n: Int, l: Int, r: Int): List<BooleanArray> {
+    return emptyList<BooleanArray>()
     // TODO
-    return emptyList()
 }
 
 data class RunData(
     val n: Int,
     val answers: Map<Pair<Int, Int>, Int> = kotlin.collections.mutableMapOf()
 )
-//fun subAnswer()
 
 fun main() {
     try {
