@@ -29,7 +29,7 @@ cw2037e
   - D
   - [E. Kachina's Favorite Binary String](https://codeforces.com/contest/2037/problem/E) ⏳
   - F
-  - G
+  - [G. Natlan Exploring](https://codeforces.com/contest/2037/problem/G) ⏳
 
 ### kotlin heroes 6
 - https://codeforces.com/contest/1488
@@ -38,6 +38,7 @@ cw2037e
 ## reference
 
 - https://codeforces.com/blog/entry/71089
+- https://codeforces.com/blog/entry/45307
 
 - https://play.kotlinlang.org/byExample/overview
 - https://kotlinlang.org/docs/collections-overview.html
